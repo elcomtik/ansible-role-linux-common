@@ -1,0 +1,16 @@
+---
+
+- name: Install common packages for RedHat & Centos
+  package:
+    name: "{{ common_packages_redhat }}"
+    state: present
+  become: yes
+  when: ansible_os_family == "RedHat"
+
+- name: Install common packages for Debian & Ubuntu
+  package:
+    name: "{{ common_packages_debian }}"
+    state: present
+  become: yes
+  when: ansible_os_family == "Debian"
+

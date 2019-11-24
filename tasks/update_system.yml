@@ -1,0 +1,39 @@
+---
+
+- name:  Update kernel on CentOS & RedHat systems
+  package: 
+    name: "kernel"
+    state: latest
+  register: kernel_updated
+  become: True
+  when: ansible_os_family == "RedHat" 
+
+- name:  Update kernel on Debian & Ubuntu systems
+  package: 
+    name: "linux-image"
+    state: latest
+  register: kernel_updated
+  become: True
+  when: ansible_os_family == "Debian" 
+
+- name: Reboot the machine
+  shell: ( sleep 2s && shutdown -r now "Ansible updates triggered" & ) 
+  become: True
+  when:
+    - allow_reboot|bool 
+    - kernel_updated.changed
+
+- name: Wait for machine to come back
+  wait_for_connection:
+    timeout: 240
+    delay: 20
+  when:
+    - allow_reboot|bool 
+    - kernel_updated.changed
+
+- name:  Update all othe packages
+  package: 
+    name: "*"
+    state: latest
+  become: True
+

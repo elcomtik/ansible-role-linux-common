@@ -1,0 +1,7 @@
+---
+
+- name: Remove cloud-init package
+  package:
+    name: cloud-init
+    state: absent
+  become: true

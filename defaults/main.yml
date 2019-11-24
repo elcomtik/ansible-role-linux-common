@@ -1,2 +1,27 @@
 ---
 # defaults file for common
+
+# Update whole system
+update_system: false
+allow_reboot: false
+
+# Installl unlimited history for root user
+unlimited_bash_history: false
+
+# Configure DNS resolvers in /etc/resolv.conf
+configure_dns_resolvers: false
+#dns_nameservers: ['8.8.8.8']  
+#dns_domain: 'localdomain'
+#dns_searchs: "localdomain otherdomain"
+#dns_options: ['timeout:3', 'attempts:5']
+
+# Install & configure firewall
+firewall_enabled: false
+
+# Install & configure fail2ban
+fail2ban_enabled: false
+
+# Install etckeeper
+etckeeper_enabled: false
+
+
