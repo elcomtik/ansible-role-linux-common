@@ -29,7 +29,7 @@ galaxy_info:
     - resolvers
     - etckeeper
 
-dependencies:
-  - jdauphant.dns
-  - elcomtik.etckeeper
+dependencies: []
+#  - jdauphant.dns
+#  - elcomtik.etckeeper
   
