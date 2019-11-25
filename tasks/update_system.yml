@@ -8,13 +8,21 @@
   become: True
   when: ansible_os_family == "RedHat" 
 
-- name:  Update kernel on Debian & Ubuntu systems
+- name:  Update kernel on Debian systems
   package: 
     name: "linux-image"
     state: latest
   register: kernel_updated
   become: True
   when: ansible_os_family == "Debian" 
+
+- name:  Update kernel on Ubuntu systems
+  package: 
+    name: "linux-image-generic"
+    state: latest
+  register: kernel_updated
+  become: True
+  when: ansible_os_family == "Ubuntu" 
 
 - name: Reboot the machine
   shell: ( sleep 2s && shutdown -r now "Ansible updates triggered" & ) 
@@ -31,7 +39,7 @@
     - allow_reboot|bool 
     - kernel_updated.changed
 
-- name:  Update all othe packages
+- name:  Update all other packages
   package: 
     name: "*"
     state: latest
