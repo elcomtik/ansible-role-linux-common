@@ -15,5 +15,7 @@
 - name: Set ACL to appendonly on file /root/.bash_history 
   file:
     path: "/root/.bash_history"
-    attributes: +a
+    attributes: ae
+    modification_time: preserve
+    access_time: preserve
   become: true
