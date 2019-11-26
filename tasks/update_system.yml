@@ -8,9 +8,14 @@
   become: True
   when: ansible_os_family == "RedHat" 
 
+
+- name: Get Debian kernel architecture
+  set_fact: 
+    debian_linux_image_version: "{{ ansible_kernel | regex_replace('^.+-(.*)$', '\\1') }}"
+
 - name:  Update kernel on Debian systems
   package: 
-    name: "linux-image"
+    name: "linux-image-{{ debian_linux_image_version }}"
     state: latest
   register: kernel_updated
   become: True
@@ -39,7 +44,7 @@
     - allow_reboot|bool 
     - kernel_updated.changed
 
-- name:  Update all other packages
+- name:  Update all packages
   package: 
     name: "*"
     state: latest
