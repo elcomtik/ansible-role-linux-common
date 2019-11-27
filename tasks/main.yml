@@ -2,28 +2,28 @@
 # tasks file for common
 
 - name: Remove cloud-init
-  include_tasks: remove_cloudinit.yml
+  import_tasks: remove_cloudinit.yml
   tags: cloudinit
 
 - name: Update whole system
-  include_tasks: update_system.yml
+  import_tasks: update_system.yml
   when: update_system|bool
   tags: update
 
 - name: Install common packages
-  include_tasks: common_pkgs.yml
+  import_tasks: common_pkgs.yml
   tags: common_pkgs
 
 - name: Setup unlimited bash history for root
-  include_tasks: unlimited_bash_history.yml
+  import_tasks: unlimited_bash_history.yml
   tags: unlimited_bash_history
 
 #- name: Apply security settings
-#  include_tasks: security.yml
+#  import_tasks: security.yml
 #  tags: security
 
 - name: Configure DNS resolvers in /etc/resolv.conf
-  include_role:
+  import_role:
     name: jdauphant.dns
   vars:
     ansible_become: True
@@ -32,17 +32,17 @@
   tags: resolvers
 
 #- name: Install & configure firewalld
-#  include_role:
+#  import_role:
 #    name: elcomtik.firewalld
 #  when: firewall_enabled
 #  tags: firewall
 
 #- name: Install & configure fail2ban
-#  include_tasks: fail2ban.yml
+#  import_tasks: fail2ban.yml
 #  when: firewall_enabled and fail2ban_enabled
 #  tags: fail2ban
 
 - name: Install & configure etckeeper
-  include_role:
+  import_role:
     name: elcomtik.etckeeper
   tags: etckeeper
