@@ -12,6 +12,14 @@
       shopt -s histappend
   become: true
 
+- name: Ensure /root/.bash_history is present (new system may not have it created yet)
+  file:
+    path: "/root/.bash_history"
+    state: touch
+    mode: '0600'
+    modification_time: preserve
+    access_time: preserve
+
 - name: Get stat info from /root/.bash_history 
   stat:
     path: "/root/.bash_history"
