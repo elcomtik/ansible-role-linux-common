@@ -1,16 +1,25 @@
 ---
 
+- name: Install epel repository for RedHat & Centos
+  package:
+    name: epel-release
+    state: present
+  become: True
+  when:
+    - ansible_os_family == "RedHat"
+    - ansible_distribution != 'Fedora' 
+
 - name: Install common packages for RedHat & Centos
   package:
     name: "{{ common_packages_redhat }}"
     state: present
-  become: yes
+  become: True
   when: ansible_os_family == "RedHat"
 
 - name: Install common packages for Debian & Ubuntu
   package:
     name: "{{ common_packages_debian }}"
     state: present
-  become: yes
+  become: True
   when: ansible_os_family == "Debian"
 
