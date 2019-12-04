@@ -2,7 +2,7 @@
 
 - name: Install epel repository for RedHat & Centos
   package:
-    name: epel-release
+    name: "epel-release"
     state: present
   become: True
   when:
@@ -15,6 +15,13 @@
     state: present
   become: True
   when: ansible_os_family == "RedHat"
+
+- name: Install aptitude for Debian & Ubuntu
+  package:
+    name: "aptitude"
+    state: present
+  become: True
+  when: ansible_os_family == "Debian"
 
 - name: Install common packages for Debian & Ubuntu
   package:
