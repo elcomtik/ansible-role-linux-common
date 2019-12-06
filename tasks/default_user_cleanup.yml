@@ -1,0 +1,10 @@
+---
+
+- name: Remove the user 
+  user:
+    name: "{{ item }}"
+    state: absent
+    remove: yes
+  become: True
+  with_items: "{{ default_users }}"
+

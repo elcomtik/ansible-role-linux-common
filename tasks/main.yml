@@ -5,6 +5,11 @@
   import_tasks: remove_cloudinit.yml
   tags: cloudinit
 
+- name: Remove default non-priviledged user
+  import_tasks: default_user_cleanup.yml
+  when: remove_default_user|bool
+  tags: default_user_cleanup
+
 - name: Update whole system
   import_tasks: update_system.yml
   when: update_system|bool
@@ -28,7 +33,7 @@
   vars:
     ansible_become: True
     dns_forced_in_dhclientconf: False
-  when: configure_dns_resolvers
+  when: configure_dns_resolvers|bool
   tags: resolvers
 
 #- name: Install & configure firewalld

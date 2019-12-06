@@ -1,6 +1,9 @@
 ---
 # defaults file for common
 
+# Remove default non-priviledged user
+remove_default_user: false
+
 # Update whole system
 update_system: false
 allow_reboot: false
