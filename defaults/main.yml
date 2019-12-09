@@ -30,3 +30,36 @@ configure_user_auth: false
 # Install etckeeper
 etckeeper_enabled: false
 
+# SSSD role configuration (user auth task)
+certificate_base_path: '/etc/openldap/cacerts'
+
+sssd_defaults:
+  debug_level: '0x0370'
+  services: nss,pam,ssh,sudo
+
+sssd_nss:
+  filter_users: root,ansible
+  filter_groups: root,ansible
+
+#sssd_domains:
+#  - name:
+#    min_id: 10000
+#    max_id: 59999
+#    id_provider: ldap
+#    auth_provider: ldap
+#    sudo_provider: ldap
+#    enumerate: 'true'
+#   cache_credentials: 'true' #this is onky for mobile devices
+#    ldap_uri:
+#    ldap_id_use_start_tls: 'false'
+#    ldap_tls_cacert: 
+#    ldap_tls_reqcert: 'allow'
+#    ldap_default_bind_dn:
+#    ldap_default_authtok_type: 'password'
+#    ldap_default_authtok: 
+#    ldap_search_base: 
+#    ldap_user_search_base:
+#    ldap_group_search_base:
+#    ldap_sudo_search_base:
+#    ldap_sudo_full_refresh_interval: '86400'
+#    ldap_sudo_smart_refresh_interval: '3600'
