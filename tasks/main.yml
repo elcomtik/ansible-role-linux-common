@@ -7,7 +7,7 @@
 
 - name: Remove default non-priviledged user
   import_tasks: default_user_cleanup.yml
-  when: remove_default_user|bool
+  when: remove_default_user | bool
   tags: default_user_cleanup
 
 - name: Update whole system
@@ -33,7 +33,7 @@
   vars:
     ansible_become: True
     dns_forced_in_dhclientconf: False
-  when: configure_dns_resolvers|bool
+  when: configure_dns_resolvers | bool
   tags: resolvers
 
 #- name: Install & configure firewalld
@@ -44,8 +44,16 @@
 
 #- name: Install & configure fail2ban
 #  import_tasks: fail2ban.yml
-#  when: firewall_enabled and fail2ban_enabled
+#  when: 
+#    - firewall_enabled
+#    - fail2ban_enabled
 #  tags: fail2ban
+
+- name: Configure user authentication
+  import_role:
+    name: hellofresh.sssd-ldap
+  when: configure_user_auth | bool
+  tags: user_auth
 
 - name: Install & configure etckeeper
   import_role:

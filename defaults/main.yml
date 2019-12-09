@@ -24,7 +24,9 @@ firewall_enabled: false
 # Install & configure fail2ban
 fail2ban_enabled: false
 
+# Configure user auth
+configure_user_auth: false
+
 # Install etckeeper
 etckeeper_enabled: false
-
 
