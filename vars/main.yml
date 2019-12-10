@@ -8,7 +8,7 @@ default_users:
   - fedora
 
 common_packages_redhat:
-  - libselinux-python
+  - python3-libselinux
   - setools-console
   - net-tools
   - bind-utils
