@@ -14,7 +14,8 @@
     name: "{{ common_packages_redhat }}"
     state: present
   become: True
-  when: ansible_os_family == "RedHat"
+  when: 
+    - ansible_os_family == "RedHat"
     - ansible_distribution != 'Fedora' 
 
 - name: Install common packages for Fedora
@@ -22,7 +23,8 @@
     name: "{{ common_packages_fedora }}"
     state: present
   become: True
-  when: ansible_os_family == "RedHat"
+  when: 
+    - ansible_os_family == "RedHat"
     - ansible_distribution == 'Fedora' 
 
 - name: Install aptitude for Debian & Ubuntu
