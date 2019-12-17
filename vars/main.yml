@@ -8,6 +8,25 @@ default_users:
   - fedora
 
 common_packages_redhat:
+  - libselinux-python
+  - setools-console
+  - net-tools
+  - bind-utils
+  - moreutils
+  - bash-completion
+  - screen
+  - htop
+  - tcpdump
+  - nmap
+  - gdisk
+  - strace
+  - iftop
+  - rsync
+  - wget
+  - vim
+  - git
+
+common_packages_fedora:
   - python3-libselinux
   - setools-console
   - net-tools
