@@ -36,11 +36,11 @@
   when: configure_dns_resolvers | bool
   tags: resolvers
 
-#- name: Install & configure firewalld
-#  import_role:
-#    name: elcomtik.firewalld
-#  when: firewall_enabled
-#  tags: firewall
+- name: Install & configure firewalld
+  import_role:
+    name: elcomtik.firewalld
+  when: firewall_enabled
+  tags: firewall
 
 #- name: Install & configure fail2ban
 #  import_tasks: fail2ban.yml
