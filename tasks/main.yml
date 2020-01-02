@@ -47,12 +47,13 @@
   when: firewall_enabled
   tags: firewall
 
-#- name: Install & configure fail2ban
-#  import_tasks: fail2ban.yml
-#  when: 
-#    - firewall_enabled
-#    - fail2ban_enabled
-#  tags: fail2ban
+- name: Install & configure fail2ban
+  import_role:
+    name: robertdebock.fail2ban
+  when: 
+    - firewall_enabled
+    - fail2ban_enabled
+  tags: fail2ban
 
 - name: Configure user authentication
   import_role:
