@@ -36,6 +36,11 @@
   when: configure_dns_resolvers | bool
   tags: resolvers
 
+- name: Install & configure rsyslog
+  import_role:
+    name: robertdebock.rsyslog
+  tags: syslogs
+
 - name: Install & configure firewalld
   import_role:
     name: elcomtik.firewalld
