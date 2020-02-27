@@ -1,0 +1,14 @@
+---
+- src: jdauphant.dns
+
+- src: robertdebock.rsyslog
+
+- src: http://gitlab.romandanko.sk/rdanko/ansible-role-firewalld.git
+
+- src: robertdebock.fail2ban
+
+- src: https://github.com/elcomtik/ansible-sssd-ldap.git
+
+- src: https://gitlab.ynet.sk/ynet/sysadmins/ansible-role-etckeeper.git
+
+- src: cloudalchemy.node-exporter
