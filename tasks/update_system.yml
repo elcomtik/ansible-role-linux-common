@@ -1,39 +1,39 @@
 ---
 
 - name:  Update kernel on CentOS & RedHat systems
-  package: 
+  package:
     name: "kernel"
-    state: latest
+    state: latest  # noqa 403
   register: kernel_updated
   become: True
-  when: ansible_os_family == "RedHat" 
+  when: ansible_os_family == "RedHat"
 
 
 - name: Get Debian kernel architecture
-  set_fact: 
+  set_fact:
     debian_linux_image_version: "{{ ansible_kernel | regex_replace('^.+-(.*)$', '\\1') }}"
 
 - name:  Update kernel on Debian systems
-  package: 
+  package:
     name: "linux-image-{{ debian_linux_image_version }}"
-    state: latest
+    state: latest  # noqa 403
   register: kernel_updated
   become: True
   when: ansible_os_family == "Debian" and ansible_distribution != 'Ubuntu'
 
 - name:  Update kernel on Ubuntu systems
-  package: 
+  package:
     name: "linux-image-generic"
-    state: latest
+    state: latest  # noqa 403
   register: kernel_updated
   become: True
-  when: ansible_distribution == "Ubuntu" 
+  when: ansible_distribution == "Ubuntu"
 
 - name: Reboot the machine
-  shell: ( sleep 2s && shutdown -r now "Ansible updates triggered" & ) 
+  shell: ( sleep 2s && shutdown -r now "Ansible updates triggered" & )
   become: True
   when:
-    - allow_reboot|bool 
+    - allow_reboot|bool
     - kernel_updated.changed
 
 - name: Wait for machine to come back
@@ -41,12 +41,12 @@
     timeout: 240
     delay: 20
   when:
-    - allow_reboot|bool 
+    - allow_reboot|bool
     - kernel_updated.changed
 
 - name:  Update all packages
-  package: 
+  package:
     name: "*"
-    state: latest
+    state: latest  # noqa 403
   become: True
 

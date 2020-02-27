@@ -21,14 +21,12 @@ galaxy_info:
         - bionic
 
   galaxy_tags:
-    - cloud-init
+    - cloudinit
     - update
     - packages
-    - bash 
+    - bash
     - resolvers
     - etckeeper
 
 dependencies: []
-#  - jdauphant.dns
-#  - elcomtik.etckeeper
-  
+

@@ -1,6 +1,6 @@
 ---
 - name: Add variables to /root/.bashrc
-  blockinfile: 
+  blockinfile:
     dest: "/root/.bashrc"
     backup: true
     insertafter: EOF
@@ -20,7 +20,7 @@
     modification_time: preserve
     access_time: preserve
 
-- name: Get stat info from /root/.bash_history 
+- name: Get stat info from /root/.bash_history
   stat:
     path: "/root/.bash_history"
   become: true
@@ -37,7 +37,7 @@
     modification_time: preserve
     access_time: preserve
   become: true
-  when: 
+  when:
     - '"append" not in bash_history_file.stat.attributes'
     - '"extents" in bash_history_file.stat.attributes'
 
@@ -48,6 +48,6 @@
     modification_time: preserve
     access_time: preserve
   become: true
-  when: 
+  when:
     - '"append" not in bash_history_file.stat.attributes'
     - '"extents" not in bash_history_file.stat.attributes'
