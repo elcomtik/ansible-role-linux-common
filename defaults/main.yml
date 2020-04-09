@@ -30,6 +30,9 @@ configure_user_auth: false
 # Install etckeeper
 etckeeper_enabled: false
 
+# Install private CA certificates
+install_cacerts: false
+
 # SSSD role configuration (user auth task)
 #certificate_base_path: '/etc/openldap/cacerts'
 #

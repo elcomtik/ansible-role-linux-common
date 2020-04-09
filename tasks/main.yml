@@ -58,6 +58,12 @@
     - fail2ban_enabled
   tags: fail2ban
 
+- name: Install private CA to trust store
+  import_role:
+    name: bdellegrazie.ca-certificates 
+  when: install_cacerts | bool
+  tags: cacerts
+
 - name: Configure user authentication
   import_role:
     name: hellofresh.sssd-ldap
