@@ -2,16 +2,17 @@ galaxy_info:
   author: Roman Danko
   description: Ansible role for installing and configuring common host settings
   license: MIT
-  min_ansible_version: 2.7
+  min_ansible_version: 2.9
 
   platforms:
     - name: Fedora
       versions:
-        - 29
         - 30
+        - 31
     - name: EL
       versions:
         - 7
+        - 8
     - name: Debian
       versions:
         - strech
