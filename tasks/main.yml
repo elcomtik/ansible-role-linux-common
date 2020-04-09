@@ -47,6 +47,9 @@
   when: firewall_enabled
   tags: firewall
 
+- name: Flush pending handlers (after firewalld config)
+  meta: flush_handlers
+
 - name: Install & configure fail2ban
   import_role:
     name: robertdebock.fail2ban
