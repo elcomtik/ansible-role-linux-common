@@ -49,6 +49,7 @@
 
 - name: Flush pending handlers (after firewalld config)
   meta: flush_handlers
+  tags: firewall
 
 - name: Install & configure fail2ban
   import_role:
