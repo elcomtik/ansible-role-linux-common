@@ -14,17 +14,19 @@
     debian_linux_image_version: "{{ ansible_kernel | regex_replace('^.+-(.*)$', '\\1') }}"
 
 - name:  Update kernel on Debian systems
-  package:
+  apt:
     name: "linux-image-{{ debian_linux_image_version }}"
     state: latest  # noqa 403
+    update_cache: True
   register: kernel_updated
   become: True
   when: ansible_os_family == "Debian" and ansible_distribution != 'Ubuntu'
 
 - name:  Update kernel on Ubuntu systems
-  package:
+  apt:
     name: "linux-image-generic"
     state: latest  # noqa 403
+    update_cache: True
   register: kernel_updated
   become: True
   when: ansible_distribution == "Ubuntu"
