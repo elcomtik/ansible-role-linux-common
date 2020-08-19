@@ -12,8 +12,18 @@
 
 - name: Update whole system
   import_tasks: update_system.yml
-  when: update_system|bool
+  when: update_system | bool
   tags: update
+
+- name: Configure Canonical livepatch for Ubuntu systems
+  import_role:
+    name: tsukune_ch.canonical_livepatch
+  vars:
+    ansible_become: True
+  when:
+    - ansible_distribution == "Ubuntu"
+    - canonical_livepatch_enabled | bool
+  tags: livepatching
 
 - name: Install common packages
   import_tasks: common_pkgs.yml

@@ -8,6 +8,9 @@ remove_default_user: false
 update_system: false
 allow_reboot: false
 
+# Configure Canonical livepatch service
+canonical_livepatch_enabled: false
+
 # Installl unlimited history for root user
 unlimited_bash_history: false
 
