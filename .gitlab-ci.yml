@@ -24,6 +24,11 @@ centos7:
   script:
     - molecule test --scenario-name centos7
 
+centos8:
+  stage: test
+  script:
+    - molecule test --scenario-name centos8
+
 fedora:
   stage: test
   script:
@@ -32,9 +37,14 @@ fedora:
 debian9:
   stage: test
   script:
-    - molecule test --scenario-name fedora
+    - molecule test --scenario-name debian9
 
 ubuntu1804:
   stage: test
   script:
     - molecule test --scenario-name ubuntu1804
+
+ubuntu2004:
+  stage: test
+  script:
+    - molecule test --scenario-name ubuntu2004
