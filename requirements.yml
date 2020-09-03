@@ -1,14 +1,19 @@
 ---
+# Ansible roles required by this role
+- src: tsukune_ch.canonical_livepatch
+
 - src: jdauphant.dns
 
 - src: robertdebock.rsyslog
 
-- src: http://gitlab.romandanko.sk/rdanko/ansible-role-firewalld.git
+- src: http://gitlab.romandanko.sk/ansible/ansible-role-firewalld.git
 
 - src: robertdebock.fail2ban
 
+- src: bdellegrazie.ca-certificates
+
 - src: https://github.com/elcomtik/ansible-sssd-ldap.git
 
-- src: https://gitlab.ynet.sk/ynet/sysadmins/ansible-role-etckeeper.git
+- src: https://gitlab.romandanko.sk/ansible/ansible-role-etckeeper.git
 
 - src: cloudalchemy.node-exporter
