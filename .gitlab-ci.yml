@@ -35,6 +35,11 @@ debian9:
   script:
     - molecule test --scenario-name debian9
 
+debian10:
+  stage: test
+  script:
+    - molecule test --scenario-name debian10
+
 ubuntu1804:
   stage: test
   script:
