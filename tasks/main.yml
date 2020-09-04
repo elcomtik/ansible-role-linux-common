@@ -1,21 +1,20 @@
 ---
-# tasks file for common
-
-- name: Remove cloud-init
+# main tasks file for role common
+- name: "Remove cloud-init"
   import_tasks: remove_cloudinit.yml
   tags: cloudinit
 
-- name: Remove default non-priviledged user
+- name: "Remove default non-priviledged user"
   import_tasks: default_user_cleanup.yml
   when: remove_default_user | bool
   tags: default_user_cleanup
 
-- name: Update whole system
+- name: "Update whole system"
   import_tasks: update_system.yml
   when: update_system | bool
   tags: update
 
-- name: Configure Canonical livepatch for Ubuntu systems
+- name: "Configure Canonical livepatch for Ubuntu systems"
   import_role:
     name: tsukune_ch.canonical_livepatch
   vars:
@@ -25,11 +24,11 @@
     - canonical_livepatch_enabled | bool
   tags: livepatching
 
-- name: Install common packages
+- name: "Install common packages"
   import_tasks: common_pkgs.yml
   tags: common_pkgs
 
-- name: Setup unlimited bash history for root
+- name: "Setup unlimited bash history for root"
   import_tasks: unlimited_bash_history.yml
   tags: unlimited_bash_history
 
@@ -37,7 +36,7 @@
 #  import_tasks: security.yml
 #  tags: security
 
-- name: Configure DNS resolvers in /etc/resolv.conf
+- name: "Configure DNS resolvers in /etc/resolv.conf"
   import_role:
     name: jdauphant.dns
   vars:
@@ -46,45 +45,47 @@
   when: configure_dns_resolvers | bool
   tags: resolvers
 
-- name: Install & configure rsyslog
+- name: "Install & configure rsyslog"
   import_role:
     name: robertdebock.rsyslog
+  when: configure_rsyslog | bool
   tags: syslogs
 
-- name: Install & configure firewalld
+- name: "Install & configure firewalld"
   import_role:
     name: elcomtik.firewalld
-  when: firewall_enabled
+  when: firewall_enabled | bool
   tags: firewall
 
-- name: Install & configure fail2ban
+- name: "Install & configure fail2ban"
   import_role:
     name: robertdebock.fail2ban
   when:
-    - firewall_enabled
-    - fail2ban_enabled
+    - firewall_enabled | bool
+    - fail2ban_enabled | bool
   tags: fail2ban
 
-- name: Install private CA to trust store
+- name: "Install private CA to trust store"
   import_role:
-    name: bdellegrazie.ca_certificates 
+    name: bdellegrazie.ca_certificates
   when: install_cacerts | bool
   tags: cacerts
 
-- name: Configure user authentication
+- name: "Configure user authentication"
   import_role:
     name: hellofresh.sssd-ldap
   when: configure_user_auth | bool
   tags: user_auth
 
-- name: Install & configure etckeeper
+- name: "Install & configure etckeeper"
   import_role:
     name: elcomtik.etckeeper
   tags: etckeeper
 
-- name: Install & configure prometheus node-exporter
+- name: "Install & configure prometheus node-exporter"
   import_role:
     name: cloudalchemy.node-exporter
+  when: install_prometheus_node_exporter | bool
   tags:
    - monitoring
    - exporters:node

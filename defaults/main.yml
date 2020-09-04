@@ -1,41 +1,40 @@
 ---
-# defaults file for common
+# defaults file for role common
 
 # Remove default non-priviledged user
-remove_default_user: false
+remove_default_user: False
 
 # Update whole system
-update_system: false
-allow_reboot: false
+update_system: False
+allow_reboot: False
 
 # Configure Canonical livepatch service
-canonical_livepatch_enabled: false
+canonical_livepatch_enabled: False
 
 # Installl unlimited history for root user
-unlimited_bash_history: false
+unlimited_bash_history: False
 
 # Configure DNS resolvers in /etc/resolv.conf
-configure_dns_resolvers: false
+configure_dns_resolvers: False
 #dns_nameservers: ['8.8.8.8']  
 #dns_domain: 'localdomain'
 #dns_searchs: "localdomain otherdomain"
 #dns_options: ['timeout:3', 'attempts:5']
 
+# Install & configure rsyslog
+configure_rsyslog: False
+
 # Install & configure firewall
-firewall_enabled: false
+firewall_enabled: False
 
 # Install & configure fail2ban
-fail2ban_enabled: false
-
-# Configure user auth
-configure_user_auth: false
-
-# Install etckeeper
-etckeeper_enabled: false
+fail2ban_enabled: False
 
 # Install private CA certificates
-install_cacerts: false
+install_cacerts: False
 
+# Configure user auth
+configure_user_auth: False
 # SSSD role configuration (user auth task)
 #certificate_base_path: '/etc/openldap/cacerts'
 #
@@ -69,3 +68,9 @@ install_cacerts: false
 #    ldap_sudo_search_base:
 #    ldap_sudo_full_refresh_interval: '86400'
 #    ldap_sudo_smart_refresh_interval: '3600'
+
+# Install etckeeper
+etckeeper_enabled: False
+
+# Install prometheus node-exporter
+install_prometheus_node_exporter: False

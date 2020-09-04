@@ -2,7 +2,7 @@
 - name: "Install epel repository for RHEL & Centos"
   package:
     name: "epel-release"
-    state: present
+    state: "present"
   become: True
   when:
     - ansible_os_family == "RedHat"
@@ -14,9 +14,9 @@
     description: "CentOS-$releasever - PowerTools"
     file: "CentOS-PowerTools"
     mirrorlist: "http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=PowerTools&infra=$infra"
-    gpgcheck: yes
+    gpgcheck: True
     gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial"
-    enabled: yes
+    enabled: True
   when:
     - ansible_os_family == "RedHat"
     - ansible_distribution_major_version == "8"
@@ -24,7 +24,7 @@
 - name: "Install common packages for RHEL & Centos (< 8)"
   package:
     name: "{{ common_packages_redhat }}"
-    state: present
+    state: "present"
   become: True
   when:
     - ansible_os_family == "RedHat"
@@ -34,7 +34,7 @@
 - name: "Install common packages for Fedora & RHEL & Centos (== 8)"
   package:
     name: "{{ common_packages_fedora }}"
-    state: present
+    state: "present"
   become: True
   when:
     - ansible_os_family == "RedHat"
@@ -43,14 +43,13 @@
 - name: "Install aptitude for Debian & Ubuntu"
   package:
     name: "aptitude"
-    state: present
+    state: "present"
   become: True
   when: ansible_os_family == "Debian"
 
 - name: "Install common packages for Debian & Ubuntu"
   package:
     name: "{{ common_packages_debian }}"
-    state: present
+    state: "present"
   become: True
   when: ansible_os_family == "Debian"
-
