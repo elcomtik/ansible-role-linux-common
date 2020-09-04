@@ -47,6 +47,7 @@ common_packages_fedora:
 
 common_packages_debian:
   - apparmor-utils
+  - aptitude
   - net-tools
   - dnsutils
   - moreutils

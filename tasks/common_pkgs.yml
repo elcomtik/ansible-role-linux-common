@@ -40,16 +40,10 @@
     - ansible_os_family == "RedHat"
     - ansible_distribution == "Fedora" or ansible_distribution_major_version == "8"
 
-- name: "Install aptitude for Debian & Ubuntu"
-  package:
-    name: "aptitude"
-    state: "present"
-  become: True
-  when: ansible_os_family == "Debian"
-
 - name: "Install common packages for Debian & Ubuntu"
-  package:
+  apt:
     name: "{{ common_packages_debian }}"
     state: "present"
+    update_cache: True
   become: True
   when: ansible_os_family == "Debian"
