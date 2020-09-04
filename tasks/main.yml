@@ -67,7 +67,7 @@
 
 - name: Install private CA to trust store
   import_role:
-    name: bdellegrazie.ca-certificates 
+    name: bdellegrazie.ca_certificates 
   when: install_cacerts | bool
   tags: cacerts
 
