@@ -50,4 +50,3 @@
     name: "*"
     state: "latest"  # noqa 403
   become: True
-
