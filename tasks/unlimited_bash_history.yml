@@ -26,17 +26,18 @@
   become: True
   register: bash_history_file
 
-- name: "Display all variables/facts known for a host"
+- name: "Display file stat attributes for /root/.bash_history"
   debug:
     var: bash_history_file.stat.attributes
 
 - name: "Set ACL to appendonly on file /root/.bash_history (when fs suport extents)"
   file:
     path: "/root/.bash_history"
-    attributes: ae
+    attributes: "ae"
     modification_time: "preserve"
     access_time: "preserve"
   become: True
+  changed_when: False
   when:
     - '"append" not in bash_history_file.stat.attributes'
     - '"extents" in bash_history_file.stat.attributes'
@@ -48,6 +49,7 @@
     modification_time: "preserve"
     access_time: "preserve"
   become: True
+  changed_when: False
   when:
     - '"append" not in bash_history_file.stat.attributes'
     - '"extents" not in bash_history_file.stat.attributes'

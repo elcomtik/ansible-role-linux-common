@@ -15,14 +15,23 @@ platforms:
     image: jrei/systemd-debian:9
     privileged: true
     command: /lib/systemd/systemd
-    tmpfs:
-      - /run
-      - /tmp
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
 provisioner:
   name: ansible
   playbooks:
     converge: ../shared/converge.yml
+    prepare: ../shared/prepare.yml
+    destroy: ../shared/destroy.yml
+scenario:
+  test_sequence:
+    - dependency
+    - syntax
+    - lint
+    - create
+    - prepare
+    - converge
+    - verify  
+    - destroy
 verifier:
   name: ansible
