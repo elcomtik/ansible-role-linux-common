@@ -2,6 +2,8 @@
 # Ansible roles required by this role
 - src: tsukune_ch.canonical_livepatch
 
+- src: turgon37.ssh_server
+
 - src: jdauphant.dns
 
 - src: robertdebock.rsyslog
