@@ -14,6 +14,9 @@ canonical_livepatch_enabled: False
 # Installl unlimited history for root user
 unlimited_bash_history: False
 
+# Configure SSH server
+configure_ssh_server: False
+
 # Configure DNS resolvers in /etc/resolv.conf
 configure_dns_resolvers: False
 #dns_nameservers: ['8.8.8.8']  

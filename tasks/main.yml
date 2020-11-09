@@ -32,6 +32,15 @@
   import_tasks: unlimited_bash_history.yml
   tags: unlimited_bash_history
 
+- name: "Configure SSH server"
+  import_role:
+    name: turgon37.ssh_server
+  vars:
+    ansible_become: True
+  when:
+    - configure_ssh_server | bool
+  tags: ssh_server
+
 #- name: Apply security settings
 #  import_tasks: security.yml
 #  tags: security
