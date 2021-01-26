@@ -8,6 +8,8 @@
 
 - src: robertdebock.rsyslog
 
+- src: michaelrigart.interfaces
+
 - src: https://gitlab.romandanko.sk/ansible/ansible-role-firewalld.git
   scm: git
   version: master

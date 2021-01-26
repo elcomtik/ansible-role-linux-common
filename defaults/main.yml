@@ -24,6 +24,9 @@ configure_dns_resolvers: False
 #dns_searchs: "localdomain otherdomain"
 #dns_options: ['timeout:3', 'attempts:5']
 
+# Configure interfaces
+configure_interfaces: False
+
 # Install & configure rsyslog
 configure_rsyslog: False
 

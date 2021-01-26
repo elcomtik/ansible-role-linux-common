@@ -54,6 +54,12 @@
   when: configure_dns_resolvers | bool
   tags: resolvers
 
+- name: "Configure network interfaces"
+  import_role:
+    name: michaelrigart.interfaces
+  when: configure_interfaces | bool
+  tags: interfaces
+
 - name: "Install & configure rsyslog"
   import_role:
     name: robertdebock.rsyslog
