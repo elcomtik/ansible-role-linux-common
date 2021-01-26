@@ -37,8 +37,7 @@
     name: turgon37.ssh_server
   vars:
     ansible_become: True
-  when:
-    - configure_ssh_server | bool
+  when: configure_ssh_server | bool
   tags: ssh_server
 
 #- name: Apply security settings
@@ -59,6 +58,14 @@
     name: michaelrigart.interfaces
   when: configure_interfaces | bool
   tags: interfaces
+
+- name: "Install & configure ntp"
+  import_role:
+    name: geerlingguy.ntp
+  vars:
+    ansible_become: True
+  when: configure_ntp | bool
+  tags: ntp
 
 - name: "Install & configure rsyslog"
   import_role:

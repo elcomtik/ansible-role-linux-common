@@ -27,6 +27,9 @@ configure_dns_resolvers: False
 # Configure interfaces
 configure_interfaces: False
 
+# Install & configure ntp client
+configure_ntp: False
+
 # Install & configure rsyslog
 configure_rsyslog: False
 

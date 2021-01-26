@@ -10,6 +10,8 @@
 
 - src: michaelrigart.interfaces
 
+- src: geerlingguy.ntp
+
 - src: https://gitlab.romandanko.sk/ansible/ansible-role-firewalld.git
   scm: git
   version: master
