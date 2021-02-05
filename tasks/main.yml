@@ -24,9 +24,18 @@
     - canonical_livepatch_enabled | bool
   tags: livepatching
 
-- name: "Install common packages"
+- name: "Ensure common packages are installed or removed"
   import_tasks: common_pkgs.yml
   tags: common_pkgs
+
+- name: "Disable & stop kdump service"
+  service:
+    name: "kdump"
+    state: "stopped"
+    enabled: False
+  become: True
+  when: disable_kdump | bool
+  tags: kdump
 
 - name: "Setup unlimited bash history for root"
   import_tasks: unlimited_bash_history.yml
@@ -40,9 +49,11 @@
   when: configure_ssh_server | bool
   tags: ssh_server
 
-#- name: Apply security settings
-#  import_tasks: security.yml
-#  tags: security
+#- name: "Install & configure LSM for Redhat systems (SElinux)"
+
+    
+#- name: "Install & configure LSM for Debian systems (AppArmor)"
+
 
 - name: "Configure DNS resolvers in /etc/resolv.conf"
   import_role:

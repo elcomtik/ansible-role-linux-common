@@ -11,6 +11,14 @@ allow_reboot: False
 # Configure Canonical livepatch service
 canonical_livepatch_enabled: False
 
+# Remove various unnecessary packages
+remove_dhclient: False
+remove_fwupd: False
+remove_qemu_guest_agent: False
+
+# Disable kdump service
+disable_kdump: False
+
 # Installl unlimited history for root user
 unlimited_bash_history: False
 

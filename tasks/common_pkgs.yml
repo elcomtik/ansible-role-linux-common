@@ -47,3 +47,24 @@
     update_cache: True
   become: True
   when: ansible_os_family == "Debian"
+
+- name: "Remove dhclient"
+  package:
+    name: "dhclient"
+    state: "absent"
+  become: True
+  when: remove_dhclient | bool
+
+- name: "Remove fwupd"
+  package:
+    name: "fwupd"
+    state: "absent"
+  become: True
+  when: remove_fwupd | bool
+
+- name: "Remove qemu-guest-agent"
+  package:
+    name: "qemu-guest-agent "
+    state: "absent"
+  become: True
+  when: remove_qemu_guest_agent | bool
