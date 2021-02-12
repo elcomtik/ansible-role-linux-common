@@ -6,7 +6,7 @@
     - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
     - "{{ ansible_distribution | lower }}.yml"
     - "{{ ansible_os_family | lower }}.yml"
-  tags: allways
+  tags: always
 
 - name: "Remove cloud-init"
   import_tasks: remove_cloudinit.yml
@@ -91,6 +91,11 @@
     name: robertdebock.rsyslog
   when: configure_rsyslog | bool
   tags: syslogs
+
+- name: "Install & configure cronjob slack sender"
+  import_tasks: cronjob_slack_sender.yml
+  when: cronjob_slack_sender | bool
+  tags: cronjobs
 
 - name: "Install & configure firewalld"
   import_role:

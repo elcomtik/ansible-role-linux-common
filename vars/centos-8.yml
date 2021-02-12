@@ -2,7 +2,7 @@
 default_users:
   - centos
 
-common_packages_fedora:
+common_packages:
   - python3-libselinux
   - setools-console
   - net-tools
@@ -20,3 +20,7 @@ common_packages_fedora:
   - wget
   - vim
   - git
+
+slack_sender_dependency_packages:
+  - python3-requests
+  - python3-simplejson

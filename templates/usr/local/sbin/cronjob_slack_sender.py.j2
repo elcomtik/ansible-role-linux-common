@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+import sys
+import json
+import requests
+
+slack_webhook_url = "{{ cronjob_slack_sender_webhook_url }}"
+
+def get_subject(lines):
+    try:
+        # Find subject
+        for line in lines:
+            if line.startswith('Subject:'):
+                subject = line.split(':', 1)[1]
+                return subject.strip()
+    except Exception as e:
+        print('get_subject exception', e)
+        return ''
+
+def get_body(lines):
+    try:
+        # Find body
+        for i, line in enumerate(lines):
+            # first blank line
+            if line == '\n':
+                body_lines = lines[i + 1:]
+                # list to string
+                return ''.join(body_lines)
+    except Exception as e:
+        print('get_body exception', e)
+        return ''
+
+# Read from stdin until there is no more
+lines = []
+for line in sys.stdin:
+    lines.append(line)
+
+subject = get_subject(lines)
+body = get_body(lines)
+
+text = f'*{subject}*\n{body}'
+slack_data = {'text': text}
+
+# Fire and forget
+requests.post(
+    slack_webhook_url, data=json.dumps(slack_data),
+    headers={'Content-Type': 'application/json'}
+)

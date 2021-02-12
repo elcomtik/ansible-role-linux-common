@@ -41,6 +41,10 @@ configure_ntp: False
 # Install & configure rsyslog
 configure_rsyslog: False
 
+# Install & configure cronjob slack sender
+cronjob_slack_sender: False
+#cronjob_slack_sender_webhook_url: ""
+
 # Install & configure firewall
 firewall_enabled: False
 

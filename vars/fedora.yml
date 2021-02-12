@@ -20,3 +20,7 @@ common_packages:
   - wget
   - vim
   - git
+
+slack_sender_dependency_packages:
+  - python3-requests
+  - python3-simplejson
