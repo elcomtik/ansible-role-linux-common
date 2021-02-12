@@ -21,28 +21,17 @@
     - ansible_os_family == "RedHat"
     - ansible_distribution_major_version == "8"
 
-- name: "Install common packages for RHEL & Centos (< 8)"
-  package:
-    name: "{{ common_packages_redhat }}"
+- name: "Install common packages for RHEL & Centos"
+  yum:
+    name: "{{ common_packages }}"
     state: "present"
+    update_cache: True
   become: True
-  when:
-    - ansible_os_family == "RedHat"
-    - ansible_distribution_major_version < "8"
-    - ansible_distribution != 'Fedora'
-
-- name: "Install common packages for Fedora & RHEL & Centos (== 8)"
-  package:
-    name: "{{ common_packages_fedora }}"
-    state: "present"
-  become: True
-  when:
-    - ansible_os_family == "RedHat"
-    - ansible_distribution == "Fedora" or ansible_distribution_major_version == "8"
+  when: ansible_os_family == "RedHat"
 
 - name: "Install common packages for Debian & Ubuntu"
   apt:
-    name: "{{ common_packages_debian }}"
+    name: "{{ common_packages }}"
     state: "present"
     update_cache: True
   become: True

@@ -1,0 +1,22 @@
+---
+default_users:
+  - debian
+
+common_packages:
+  - apparmor-utils
+  - aptitude
+  - net-tools
+  - dnsutils
+  - moreutils
+  - bash-completion
+  - screen
+  - htop
+  - tcpdump
+  - nmap
+  - gdisk
+  - strace
+  - iftop
+  - rsync
+  - wget
+  - vim
+  - git

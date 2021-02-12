@@ -1,0 +1,22 @@
+---
+default_users:
+  - centos
+
+common_packages:
+  - libselinux-python
+  - setools-console
+  - net-tools
+  - bind-utils
+  - moreutils
+  - bash-completion
+  - screen
+  - htop
+  - tcpdump
+  - nmap
+  - gdisk
+  - strace
+  - iftop
+  - rsync
+  - wget
+  - vim
+  - git
