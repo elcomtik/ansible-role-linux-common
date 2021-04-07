@@ -36,13 +36,20 @@
   import_tasks: common_pkgs.yml
   tags: common_pkgs
 
+- name: "Get the list of services"
+  service_facts:
+  when: disable_kdump | bool
+  tags: kdump
+
 - name: "Disable & stop kdump service"
   service:
-    name: "kdump"
+    name: "kdump.service"
     state: "stopped"
     enabled: False
   become: True
-  when: disable_kdump | bool
+  when: 
+    - disable_kdump | bool
+    - "'kdump.service' in ansible_facts.services"
   tags: kdump
 
 - name: "Setup unlimited bash history for root"
