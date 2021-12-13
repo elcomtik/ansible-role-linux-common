@@ -1,0 +1,26 @@
+---
+default_users:
+  - centos
+
+common_packages:
+  - python3-libselinux
+  - setools-console
+  - net-tools
+  - bind-utils
+  - moreutils
+  - bash-completion
+  - screen
+  - htop
+  - tcpdump
+  - nmap
+  - gdisk
+  - strace
+  - iftop
+  - rsync
+  - wget
+  - vim
+  - git
+
+slack_sender_dependency_packages:
+  - python3-requests
+  - python3-simplejson
