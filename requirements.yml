@@ -31,4 +31,4 @@
   version: master
   name: elcomtik.etckeeper
 
-- src: cloudalchemy.node-exporter
+- src: cloudalchemy.node_exporter
