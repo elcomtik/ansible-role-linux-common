@@ -26,5 +26,15 @@ provisioner:
     converge: ../shared/converge.yml
     prepare: ../shared/prepare.yml
     destroy: ../shared/destroy.yml
+scenario:
+  test_sequence:
+    - dependency
+    - syntax
+    - lint
+    - create
+    - prepare
+    - converge
+    - verify
+    - destroy
 verifier:
   name: ansible
