@@ -1,4 +1,4 @@
-# ansible_role_common
+# ansible-role-common
 
 Ansible role for installing and configuring common host settings.
 
@@ -7,13 +7,7 @@ Ansible role for installing and configuring common host settings.
 
 ### GitHub Actions
 
-![Molecule Test](https://github.com/example/ansible_role_common/workflows/Molecule%20Test/badge.svg)
-
-### Travis CI
-
-[![Build Status](https://travis-ci.org/example/ansible_role_common.svg?branch=master)](https://travis-ci.org/example/ansible_role_common)
-
-
+![Molecule Test](https://github.com/elcomtik/ansible-role-common/workflows/Molecule%20Test/badge.svg)
 
 ## Requirements
 
