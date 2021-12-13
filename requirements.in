@@ -3,6 +3,6 @@ ansible ~=3.0
 ansible-lint
 docker
 mkdocs
-molecule
+molecule[docker]
 pip-tools
 yamllint
