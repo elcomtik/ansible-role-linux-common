@@ -1,34 +1,35 @@
 ---
-# Ansible roles required by this role
-- src: tsukune_ch.canonical_livepatch
+collections: []
+roles:
+  - src: tsukune_ch.canonical_livepatch
 
-- src: turgon37.ssh_server
+  - src: turgon37.ssh_server
 
-- src: jdauphant.dns
+  - src: jdauphant.dns
 
-- src: robertdebock.rsyslog
+  - src: robertdebock.rsyslog
 
-- src: michaelrigart.interfaces
+  - src: michaelrigart.interfaces
 
-- src: geerlingguy.ntp
+  - src: geerlingguy.ntp
 
-- src: https://gitlab.romandanko.sk/ansible/ansible-role-firewalld.git
-  scm: git
-  version: master
-  name: elcomtik.firewalld
+  - src: https://gitlab.romandanko.sk/ansible/ansible-role-firewalld.git
+    scm: git
+    version: master
+    name: elcomtik.firewalld
 
-- src: robertdebock.fail2ban
+  - src: robertdebock.fail2ban
 
-- src: bdellegrazie.ca_certificates
+  - src: bdellegrazie.ca_certificates
 
-- src: https://github.com/elcomtik/ansible-sssd-ldap.git
-  scm: git
-  version: master
-  name: hellofresh.sssd-ldap
+  - src: https://github.com/elcomtik/ansible-sssd-ldap.git
+    scm: git
+    version: master
+    name: hellofresh.sssd-ldap
 
-- src: https://gitlab.romandanko.sk/ansible/ansible-role-etckeeper.git
-  scm: git
-  version: master
-  name: elcomtik.etckeeper
+  - src: https://gitlab.romandanko.sk/ansible/ansible-role-etckeeper.git
+    scm: git
+    version: master
+    name: elcomtik.etckeeper
 
-- src: cloudalchemy.node_exporter
+  - src: cloudalchemy.node_exporter
