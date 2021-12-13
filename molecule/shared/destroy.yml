@@ -1,0 +1,33 @@
+---
+- hosts: all
+  tasks:
+    - name: "Remove appendonly on file /root/.bash_history"
+      block:
+        - name: "Get stat info from /root/.bash_history"
+          stat:
+            path: "/root/.bash_history"
+          become: True
+          register: bash_history_file
+
+        - name: "Set ACL to default on file /root/.bash_history (when fs suport extents)"
+          file:
+            path: "/root/.bash_history"
+            attributes: "ae"
+            modification_time: "preserve"
+            access_time: "preserve"
+          become: True
+          when:
+            - '"append" in bash_history_file.stat.attributes'
+            - '"extents" in bash_history_file.stat.attributes'
+
+        - name: "Set ACL to default on file /root/.bash_history (when fs do not suport extents)"
+          file:
+            path: "/root/.bash_history"
+            attributes: "a"
+            modification_time: "preserve"
+            access_time: "preserve"
+          become: True
+          when:
+            - '"append" in bash_history_file.stat.attributes'
+            - '"extents" not in bash_history_file.stat.attributes'
+      when: ansible_os_family == "Debian"
