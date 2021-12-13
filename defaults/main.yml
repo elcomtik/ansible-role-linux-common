@@ -27,7 +27,7 @@ configure_ssh_server: False
 
 # Configure DNS resolvers in /etc/resolv.conf
 configure_dns_resolvers: False
-#dns_nameservers: ['8.8.8.8']  
+#dns_nameservers: ['8.8.8.8']
 #dns_domain: 'localdomain'
 #dns_searchs: "localdomain otherdomain"
 #dns_options: ['timeout:3', 'attempts:5']
@@ -78,12 +78,12 @@ configure_user_auth: False
 #   cache_credentials: 'true' #this is onky for mobile devices
 #    ldap_uri:
 #    ldap_id_use_start_tls: 'false'
-#    ldap_tls_cacert: 
+#    ldap_tls_cacert:
 #    ldap_tls_reqcert: 'allow'
 #    ldap_default_bind_dn:
 #    ldap_default_authtok_type: 'password'
-#    ldap_default_authtok: 
-#    ldap_search_base: 
+#    ldap_default_authtok:
+#    ldap_search_base:
 #    ldap_user_search_base:
 #    ldap_group_search_base:
 #    ldap_sudo_search_base:

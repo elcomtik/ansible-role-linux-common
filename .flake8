@@ -1,2 +1,5 @@
 [flake8]
-exclude = venv/
+exclude =
+  .venv/
+  .cache/
+max-line-length = 88

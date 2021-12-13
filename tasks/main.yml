@@ -47,7 +47,7 @@
     state: "stopped"
     enabled: False
   become: True
-  when: 
+  when:
     - disable_kdump | bool
     - "'kdump.service' in ansible_facts.services"
   tags: kdump
@@ -65,10 +65,7 @@
   tags: ssh_server
 
 #- name: "Install & configure LSM for Redhat systems (SElinux)"
-
-    
 #- name: "Install & configure LSM for Debian systems (AppArmor)"
-
 
 - name: "Configure DNS resolvers in /etc/resolv.conf"
   import_role:

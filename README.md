@@ -1,38 +1,39 @@
-Role Name
-=========
+# ansible-role-common
 
-A brief description of the role goes here.
+Ansible role for installing and configuring common host settings.
 
-Requirements
-------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+## Build Status
 
-Role Variables
---------------
+### GitHub Actions
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+![Molecule Test](https://github.com/elcomtik/ansible-role-common/workflows/Molecule%20Test/badge.svg)
 
-Dependencies
-------------
+## Requirements
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+For any required Ansible roles, review:
+[requirements.yml](requirements.yml)
 
-Example Playbook
-----------------
+## Role Variables
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+[defaults/main.yml](defaults/main.yml)
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+## Dependencies
 
-License
--------
+## Example Playbook
+
+[playbook.yml](playbook.yml)
+
+## License
 
 MIT
 
-Author Information
-------------------
+## Author Information
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Roman Danko
+
+- [@elcomtik](https://twitter.com/elcomtik)
+- [mail@romandanko.sk](mailto:mail@romandanko.sk])
+- [www.romandanko.sk](https://www.romandanko.sk)
+
+> NOTE: Repo has been created/updated using [https://github.com/mrlesmithjr/cookiecutter-ansible-role](https://github.com/mrlesmithjr/cookiecutter-ansible-role) as a template.
