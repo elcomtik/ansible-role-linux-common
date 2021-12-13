@@ -1,4 +1,6 @@
 galaxy_info:
+  namespace: elcomtik
+  role_name: common
   author: Roman Danko
   description: Ansible role for installing and configuring common host settings
   license: MIT
