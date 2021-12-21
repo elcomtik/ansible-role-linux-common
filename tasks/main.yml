@@ -82,6 +82,11 @@
   when: configure_interfaces | bool
   tags: interfaces
 
+- name: "Get the list of services"
+  service_facts:
+  when: configure_interfaces | bool
+  tags: interfaces
+
 - name: "Disable & stop NetworkManager service"
   service:
     name: "NetworkManager.service"
