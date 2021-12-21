@@ -82,6 +82,17 @@
   when: configure_interfaces | bool
   tags: interfaces
 
+- name: "Disable & stop NetworkManager service"
+  service:
+    name: "NetworkManager.service"
+    state: "stopped"
+    enabled: False
+  become: True
+  when:
+    - configure_interfaces | bool
+    - "'NetworkManager.service' in ansible_facts.services"
+  tags: interfaces
+
 - name: "Install & configure ntp"
   import_role:
     name: geerlingguy.ntp
