@@ -127,7 +127,6 @@
   import_role:
     name: robertdebock.fail2ban
   when:
-    - firewall_enabled | bool
     - fail2ban_enabled | bool
   tags: fail2ban
 
