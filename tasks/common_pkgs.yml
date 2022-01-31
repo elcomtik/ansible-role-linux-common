@@ -8,20 +8,6 @@
     - ansible_os_family == "RedHat"
     - ansible_distribution != 'Fedora'
 
-- name: "Enable PowerTools repository for RHEL8 & Centos8"
-  yum_repository:
-    name: "PowerTools"
-    description: "CentOS-$releasever - PowerTools"
-    file: "CentOS-PowerTools"
-    mirrorlist: "http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=PowerTools&infra=$infra"
-    gpgcheck: True
-    gpgkey: "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial"
-    enabled: True
-  when:
-    - ansible_os_family == "RedHat"
-    - ansible_distribution_major_version == "8"
-    - ansible_distribution_release != "Stream"
-
 - name: "Install common packages for RHEL & Centos"
   yum:
     name: "{{ common_packages }}"
