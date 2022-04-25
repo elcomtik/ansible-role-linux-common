@@ -67,21 +67,6 @@
 #- name: "Install & configure LSM for Redhat systems (SElinux)"
 #- name: "Install & configure LSM for Debian systems (AppArmor)"
 
-- name: "Configure DNS resolvers in /etc/resolv.conf"
-  import_role:
-    name: jdauphant.dns
-  vars:
-    ansible_become: True
-    dns_forced_in_dhclientconf: False
-  when: configure_dns_resolvers | bool
-  tags: resolvers
-
-- name: "Configure network interfaces"
-  import_role:
-    name: michaelrigart.interfaces
-  when: configure_interfaces | bool
-  tags: interfaces
-
 - name: "Get the list of services"
   service_facts:
   when: configure_interfaces | bool
@@ -96,6 +81,21 @@
   when:
     - configure_interfaces | bool
     - "'NetworkManager.service' in ansible_facts.services"
+  tags: interfaces
+
+- name: "Configure DNS resolvers in /etc/resolv.conf"
+  import_role:
+    name: jdauphant.dns
+  vars:
+    ansible_become: True
+    dns_forced_in_dhclientconf: False
+  when: configure_dns_resolvers | bool
+  tags: resolvers
+
+- name: "Configure network interfaces"
+  import_role:
+    name: michaelrigart.interfaces
+  when: configure_interfaces | bool
   tags: interfaces
 
 - name: "Install & configure ntp"
