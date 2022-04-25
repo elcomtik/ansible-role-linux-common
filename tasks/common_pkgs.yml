@@ -8,6 +8,11 @@
     - ansible_os_family == "RedHat"
     - ansible_distribution != 'Fedora'
 
+- name: "Enable PowerTools repository"
+  import_role:
+    name: robertdebock.powertools
+  become: True
+
 - name: "Install common packages for RHEL & Centos"
   yum:
     name: "{{ common_packages }}"

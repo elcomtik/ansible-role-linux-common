@@ -33,3 +33,5 @@ roles:
     name: elcomtik.etckeeper
 
   - src: cloudalchemy.node_exporter
+
+  - src: robertdebock.powertools
