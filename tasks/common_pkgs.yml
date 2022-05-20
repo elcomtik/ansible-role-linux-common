@@ -12,6 +12,9 @@
   import_role:
     name: robertdebock.powertools
   become: True
+  when:
+    - ansible_os_family == "RedHat"
+    - ansible_distribution != 'Fedora'
 
 - name: "Install common packages for RHEL & Centos"
   yum:
