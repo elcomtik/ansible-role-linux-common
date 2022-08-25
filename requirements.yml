@@ -3,6 +3,8 @@ collections: []
 roles:
   - src: tsukune_ch.canonical_livepatch
 
+  - src: geerlingguy.swap
+
   - src: turgon37.ssh_server
 
   - src: jdauphant.dns

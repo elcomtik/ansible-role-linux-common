@@ -52,6 +52,12 @@
     - "'kdump.service' in ansible_facts.services"
   tags: kdump
 
+- name: "Configure swap"
+  import_role:
+    name: geerlingguy.swap
+  when: configure_swap | bool
+  tags: swap
+
 - name: "Setup unlimited bash history for root"
   import_tasks: unlimited_bash_history.yml
   tags: unlimited_bash_history

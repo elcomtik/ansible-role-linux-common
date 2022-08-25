@@ -19,7 +19,10 @@ remove_qemu_guest_agent: False
 # Disable kdump service
 disable_kdump: False
 
-# Installl unlimited history for root user
+# Configure swap
+configure_swap: False
+
+# Install unlimited history for root user
 unlimited_bash_history: False
 
 # Configure SSH server
