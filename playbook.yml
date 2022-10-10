@@ -2,6 +2,6 @@
 - name: Example Playbook
   hosts: all
   tasks:
-    - name: Include elcomtik.common
+    - name: Include elcomtik.linux_common
       include_role:
-        name: elcomtik.common
+        name: elcomtik.linux_common

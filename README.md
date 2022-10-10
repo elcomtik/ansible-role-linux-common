@@ -1,13 +1,13 @@
-# ansible-role-common
+# ansible-role-linux-common
 
-Ansible role for installing and configuring common host settings.
+Ansible role for installing and configuring common linux host settings.
 
 
 ## Build Status
 
 ### GitHub Actions
 
-![Molecule Test](https://github.com/elcomtik/ansible-role-common/workflows/Molecule%20Test/badge.svg)
+![Molecule Test](https://github.com/elcomtik/ansible-role-linux-common/workflows/Molecule%20Test/badge.svg)
 
 ## Requirements
 
