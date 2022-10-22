@@ -9,6 +9,7 @@ common_packages:
   - bind-utils
   - moreutils
   - bash-completion
+  - yum-plugin-versionlock
   - screen
   - htop
   - tcpdump

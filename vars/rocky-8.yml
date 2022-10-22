@@ -9,6 +9,7 @@ common_packages:
   - bind-utils
   - moreutils
   - bash-completion
+  - python3-dnf-plugin-versionlock
   - screen
   - htop
   - tcpdump
