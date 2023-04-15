@@ -23,5 +23,6 @@ common_packages:
   - git
 
 slack_sender_dependency_packages:
+  - cronie
   - python36-requests
   - python36-simplejson
