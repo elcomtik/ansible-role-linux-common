@@ -2,7 +2,7 @@
 # main tasks file for role linux_common
 
 - name: "Gather os specific variables"
-  include_vars: "{{ item }}"
+  ansible.builtin.include_vars: "{{ item }}"
   with_first_found:
     - "{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version | lower }}.yml"
     - "{{ ansible_distribution | lower }}.yml"
@@ -10,21 +10,21 @@
   tags: always
 
 - name: "Remove cloud-init"
-  import_tasks: remove_cloudinit.yml
+  ansible.builtin.import_tasks: remove_cloudinit.yml
   tags: cloudinit
 
 - name: "Remove default non-priviledged user"
-  import_tasks: default_user_cleanup.yml
+  ansible.builtin.import_tasks: default_user_cleanup.yml
   when: remove_default_user | bool
   tags: default_user_cleanup
 
 - name: "Update whole system"
-  import_tasks: update_system.yml
+  ansible.builtin.import_tasks: update_system.yml
   when: update_system | bool
   tags: update
 
 - name: "Configure Canonical livepatch for Ubuntu systems"
-  import_role:
+  ansible.builtin.import_role:
     name: tsukune_ch.canonical_livepatch
   vars:
     ansible_become: True
@@ -34,37 +34,37 @@
   tags: livepatching
 
 - name: "Ensure common packages are installed or removed"
-  import_tasks: common_pkgs.yml
+  ansible.builtin.import_tasks: common_pkgs.yml
   tags: common_pkgs
 
 - name: "Get the list of services"
-  service_facts:
+  ansible.builtin.service_facts:
   when: disable_kdump | bool
   tags: kdump
 
 - name: "Disable & stop kdump service"
-  service:
+  become: True
+  ansible.builtin.service:
     name: "kdump.service"
     state: "stopped"
     enabled: False
-  become: True
   when:
     - disable_kdump | bool
     - "'kdump.service' in ansible_facts.services"
   tags: kdump
 
 - name: "Configure swap"
-  import_role:
+  ansible.builtin.import_role:
     name: geerlingguy.swap
   when: configure_swap | bool
   tags: swap
 
 - name: "Setup unlimited bash history for root"
-  import_tasks: unlimited_bash_history.yml
+  ansible.builtin.import_tasks: unlimited_bash_history.yml
   tags: unlimited_bash_history
 
 - name: "Configure SSH server"
-  import_role:
+  ansible.builtin.import_role:
     name: turgon37.ssh_server
   vars:
     ansible_become: True
@@ -75,23 +75,23 @@
 #- name: "Install & configure LSM for Debian systems (AppArmor)"
 
 - name: "Get the list of services"
-  service_facts:
+  ansible.builtin.service_facts:
   when: configure_interfaces | bool
   tags: interfaces
 
 - name: "Disable & stop NetworkManager service"
-  service:
+  become: True
+  ansible.builtin.service:
     name: "NetworkManager.service"
     state: "stopped"
     enabled: False
-  become: True
   when:
     - configure_interfaces | bool
     - "'NetworkManager.service' in ansible_facts.services"
   tags: interfaces
 
 - name: "Configure DNS resolvers in /etc/resolv.conf"
-  import_role:
+  ansible.builtin.import_role:
     name: jdauphant.dns
   vars:
     ansible_become: True
@@ -100,13 +100,13 @@
   tags: resolvers
 
 - name: "Configure network interfaces"
-  import_role:
+  ansible.builtin.import_role:
     name: michaelrigart.interfaces
   when: configure_interfaces | bool
   tags: interfaces
 
 - name: "Install & configure ntp"
-  import_role:
+  ansible.builtin.import_role:
     name: geerlingguy.ntp
   vars:
     ansible_become: True
@@ -114,48 +114,48 @@
   tags: ntp
 
 - name: "Install & configure rsyslog"
-  import_role:
+  ansible.builtin.import_role:
     name: robertdebock.rsyslog
   when: configure_rsyslog | bool
   tags: syslogs
 
 - name: "Install & configure cronjob slack sender"
-  import_tasks: cronjob_slack_sender.yml
+  ansible.builtin.import_tasks: cronjob_slack_sender.yml
   when: cronjob_slack_sender | bool
   tags: cronjobs
 
 - name: "Install & configure firewalld"
-  import_role:
+  ansible.builtin.import_role:
     name: elcomtik.firewalld
   when: firewall_enabled | bool
   tags: firewall
 
 - name: "Install & configure fail2ban"
-  import_role:
+  ansible.builtin.import_role:
     name: robertdebock.fail2ban
   when:
     - fail2ban_enabled | bool
   tags: fail2ban
 
 - name: "Install private CA to trust store"
-  import_role:
+  ansible.builtin.import_role:
     name: bdellegrazie.ca_certificates
   when: install_cacerts | bool
   tags: cacerts
 
 - name: "Configure user authentication"
-  import_role:
+  ansible.builtin.import_role:
     name: hellofresh.sssd-ldap
   when: configure_user_auth | bool
   tags: user_auth
 
 - name: "Install & configure etckeeper"
-  import_role:
+  ansible.builtin.import_role:
     name: elcomtik.etckeeper
   tags: etckeeper
 
 - name: "Install & configure prometheus node-exporter"
-  import_role:
+  ansible.builtin.import_role:
     name: cloudalchemy.node_exporter
   when: install_prometheus_node_exporter | bool
   tags:

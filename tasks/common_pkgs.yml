@@ -1,54 +1,54 @@
 ---
 - name: "Install epel repository for RHEL & Centos"
-  package:
+  become: True
+  ansible.builtin.package:
     name: "epel-release"
     state: "present"
-  become: True
   when:
     - ansible_os_family == "RedHat"
     - ansible_distribution != 'Fedora'
 
 - name: "Enable PowerTools repository"
-  import_role:
-    name: robertdebock.powertools
   become: True
+  ansible.builtin.import_role:
+    name: robertdebock.powertools
   when:
     - ansible_os_family == "RedHat"
     - ansible_distribution != 'Fedora'
 
 - name: "Install common packages for RHEL & Centos"
-  yum:
+  become: True
+  ansible.builtin.yum:
     name: "{{ common_packages }}"
     state: "present"
     update_cache: True
-  become: True
   when: ansible_os_family == "RedHat"
 
 - name: "Install common packages for Debian & Ubuntu"
-  apt:
+  become: True
+  ansible.builtin.apt:
     name: "{{ common_packages }}"
     state: "present"
     update_cache: True
-  become: True
   when: ansible_os_family == "Debian"
 
 - name: "Remove dhclient"
-  package:
+  become: True
+  ansible.builtin.package:
     name: "dhclient"
     state: "absent"
-  become: True
   when: remove_dhclient | bool
 
 - name: "Remove fwupd"
-  package:
+  become: True
+  ansible.builtin.package:
     name: "fwupd"
     state: "absent"
-  become: True
   when: remove_fwupd | bool
 
 - name: "Remove qemu-guest-agent"
-  package:
+  become: True
+  ansible.builtin.package:
     name: "qemu-guest-agent "
     state: "absent"
-  become: True
   when: remove_qemu_guest_agent | bool

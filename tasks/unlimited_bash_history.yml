@@ -1,6 +1,7 @@
 ---
 - name: "Add variables to /root/.bashrc"
-  blockinfile:
+  become: True
+  ansible.builtin.blockinfile:
     dest: "/root/.bashrc"
     backup: True
     insertafter: EOF
@@ -10,10 +11,9 @@
       PROMPT_COMMAND="history -a"
       export HISTTIMEFORMAT="%d/%m/%y %T"
       shopt -s histappend
-  become: True
 
 - name: "Ensure /root/.bash_history is present (new system may not have it created yet)"
-  file:
+  ansible.builtin.file:
     path: "/root/.bash_history"
     state: "touch"
     mode: "0600"
@@ -21,34 +21,34 @@
     access_time: "preserve"
 
 - name: "Get stat info from /root/.bash_history"
-  stat:
-    path: "/root/.bash_history"
   become: True
+  ansible.builtin.stat:
+    path: "/root/.bash_history"
   register: bash_history_file
 
 - name: "Display file stat attributes for /root/.bash_history"
-  debug:
+  ansible.builtin.debug:
     var: bash_history_file.stat.attributes
 
 - name: "Set ACL to appendonly on file /root/.bash_history (when fs suport extents)"
-  file:
+  become: True
+  ansible.builtin.file:
     path: "/root/.bash_history"
     attributes: "ae"
     modification_time: "preserve"
     access_time: "preserve"
-  become: True
   changed_when: False
   when:
     - '"append" not in bash_history_file.stat.attributes'
     - '"extents" in bash_history_file.stat.attributes'
 
 - name: "Set ACL to appendonly on file /root/.bash_history (when fs do not suport extents)"
-  file:
+  become: True
+  ansible.builtin.file:
     path: "/root/.bash_history"
     attributes: "a"
     modification_time: "preserve"
     access_time: "preserve"
-  become: True
   changed_when: False
   when:
     - '"append" not in bash_history_file.stat.attributes'

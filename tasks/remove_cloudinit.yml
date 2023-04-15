@@ -1,6 +1,6 @@
 ---
 - name: "Remove cloud-init package"
-  package:
+  become: True
+  ansible.builtin.package:
     name: "cloud-init"
     state: "absent"
-  become: True

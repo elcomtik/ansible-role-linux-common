@@ -3,5 +3,5 @@
   hosts: all
   tasks:
     - name: Include elcomtik.linux_common
-      include_role:
+      ansible.builtin.include_role:
         name: elcomtik.linux_common
