@@ -1,5 +1,7 @@
 ---
-collections: []
+collections:
+  - name: prometheus.prometheus
+
 roles:
   - src: tsukune_ch.canonical_livepatch
 

@@ -156,7 +156,7 @@
 
 - name: "Install & configure prometheus node-exporter"
   ansible.builtin.import_role:
-    name: cloudalchemy.node_exporter
+    name: prometheus.prometheus.node_exporter
   when: install_prometheus_node_exporter | bool
   tags:
    - monitoring
