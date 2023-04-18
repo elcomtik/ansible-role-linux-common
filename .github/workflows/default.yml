@@ -19,15 +19,14 @@ jobs:
       matrix:
         molecule_distro:
           - centos7
-          - centos8
           - debian9
           - debian10
           - debian11
-          - fedora34
           - fedora35
+          - fedora36
           - rocky8
-          - ubuntu1804
           - ubuntu2004
+          - ubuntu2204
         python-version: [3.8]
 
     steps:
