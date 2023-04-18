@@ -2,99 +2,100 @@
 # defaults file for role linux_common
 
 # Remove default non-priviledged user
-remove_default_user: False
+remove_default_user: false
 
 # Update whole system
-update_system: False
-allow_reboot: False
+update_system: false
+allow_reboot: false
 
 # Configure Canonical livepatch service
-canonical_livepatch_enabled: False
+canonical_livepatch_enabled: false
 
 # Remove various unnecessary packages
-remove_dhclient: False
-remove_fwupd: False
-remove_qemu_guest_agent: False
+remove_dhclient: false
+remove_fwupd: false
+remove_qemu_guest_agent: false
 
 # Disable kdump service
-disable_kdump: False
+disable_kdump: false
 
 # Configure swap
-configure_swap: False
+configure_swap: false
 
 # Install unlimited history for root user
-unlimited_bash_history: False
+unlimited_bash_history: false
 
 # Configure SSH server
-configure_ssh_server: False
+configure_ssh_server: false
 
 # Configure DNS resolvers in /etc/resolv.conf
-configure_dns_resolvers: False
-#dns_nameservers: ['8.8.8.8']
-#dns_domain: 'localdomain'
-#dns_searchs: "localdomain otherdomain"
-#dns_options: ['timeout:3', 'attempts:5']
+configure_dns_resolvers: false
+# dns_nameservers: ['8.8.8.8']
+# dns_domain: 'localdomain'
+# dns_searchs: "localdomain otherdomain"
+# dns_options: ['timeout:3', 'attempts:5']
 
 # Configure interfaces
-configure_interfaces: False
+configure_interfaces: false
 
 # Install & configure ntp client
-configure_ntp: False
+configure_ntp: false
 
 # Install & configure rsyslog
-configure_rsyslog: False
+configure_rsyslog: false
 
 # Install & configure cronjob slack sender
-cronjob_slack_sender: False
-#cronjob_slack_sender_webhook_url: ""
+cronjob_slack_sender: false
+# cronjob_slack_sender_webhook_url: ""
 
 # Install & configure firewall
-firewall_enabled: False
+firewall_enabled: false
 
 # Install & configure fail2ban
-fail2ban_enabled: False
+fail2ban_enabled: false
 
 # Install private CA certificates
-install_cacerts: False
+install_cacerts: false
 
 # Configure user auth
-configure_user_auth: False
+configure_user_auth: false
+
 # SSSD role configuration (user auth task)
-#certificate_base_path: '/etc/openldap/cacerts'
+# certificate_base_path: '/etc/openldap/cacerts'
 #
-#sssd_defaults:
-#  debug_level: '0x0370'
-#  services: nss,pam,ssh,sudo
+# sssd_defaults:
+#   debug_level: '0x0370'
+#   services: nss,pam,ssh,sudo
 #
-#sssd_nss:
-#  filter_users: root,ansible
-#  filter_groups: root,ansible
+# sssd_nss:
+#   filter_users: root,ansible
+#   filter_groups: root,ansible
 #
-#sssd_domains:
-#  - name:
-#    min_id: 10000
-#    max_id: 59999
-#    id_provider: ldap
-#    auth_provider: ldap
-#    sudo_provider: ldap
-#    enumerate: 'true'
-#   cache_credentials: 'true' #this is onky for mobile devices
-#    ldap_uri:
-#    ldap_id_use_start_tls: 'false'
-#    ldap_tls_cacert:
-#    ldap_tls_reqcert: 'allow'
-#    ldap_default_bind_dn:
-#    ldap_default_authtok_type: 'password'
-#    ldap_default_authtok:
-#    ldap_search_base:
-#    ldap_user_search_base:
-#    ldap_group_search_base:
-#    ldap_sudo_search_base:
-#    ldap_sudo_full_refresh_interval: '86400'
-#    ldap_sudo_smart_refresh_interval: '3600'
+# sssd_domains:
+#   - name:
+#     min_id: 10000
+#     max_id: 59999
+#     id_provider: ldap
+#     auth_provider: ldap
+#     sudo_provider: ldap
+#     enumerate: 'true'
+#    cache_credentials: 'true' #this is onky for mobile devices
+#     ldap_uri:
+#     ldap_id_use_start_tls: 'false'
+#     ldap_tls_cacert:
+#     ldap_tls_reqcert: 'allow'
+#     ldap_default_bind_dn:
+#     ldap_default_authtok_type: 'password'
+#     ldap_default_authtok:
+#     ldap_search_base:
+#     ldap_user_search_base:
+#     ldap_group_search_base:
+#     ldap_sudo_search_base:
+#     ldap_sudo_full_refresh_interval: '86400'
+#     ldap_sudo_smart_refresh_interval: '3600'
 
 # Install etckeeper
-etckeeper_enabled: False
+etckeeper_enabled: false
 
 # Install prometheus node-exporter
-install_prometheus_node_exporter: False
+install_prometheus_node_exporter: false

@@ -27,7 +27,7 @@
   ansible.builtin.import_role:
     name: tsukune_ch.canonical_livepatch
   vars:
-    ansible_become: True
+    ansible_become: true
   when:
     - ansible_distribution == "Ubuntu"
     - canonical_livepatch_enabled | bool
@@ -43,11 +43,11 @@
   tags: kdump
 
 - name: "Disable & stop kdump service"
-  become: True
+  become: true
   ansible.builtin.service:
     name: "kdump.service"
     state: "stopped"
-    enabled: False
+    enabled: false
   when:
     - disable_kdump | bool
     - "'kdump.service' in ansible_facts.services"
@@ -67,12 +67,12 @@
   ansible.builtin.import_role:
     name: turgon37.ssh_server
   vars:
-    ansible_become: True
+    ansible_become: true
   when: configure_ssh_server | bool
   tags: ssh_server
 
-#- name: "Install & configure LSM for Redhat systems (SElinux)"
-#- name: "Install & configure LSM for Debian systems (AppArmor)"
+# - name: "Install & configure LSM for Redhat systems (SElinux)"
+# - name: "Install & configure LSM for Debian systems (AppArmor)"
 
 - name: "Get the list of services"
   ansible.builtin.service_facts:
@@ -80,11 +80,11 @@
   tags: interfaces
 
 - name: "Disable & stop NetworkManager service"
-  become: True
+  become: true
   ansible.builtin.service:
     name: "NetworkManager.service"
     state: "stopped"
-    enabled: False
+    enabled: false
   when:
     - configure_interfaces | bool
     - "'NetworkManager.service' in ansible_facts.services"
@@ -94,8 +94,8 @@
   ansible.builtin.import_role:
     name: jdauphant.dns
   vars:
-    ansible_become: True
-    dns_forced_in_dhclientconf: False
+    ansible_become: true
+    dns_forced_in_dhclientconf: false
   when: configure_dns_resolvers | bool
   tags: resolvers
 
@@ -109,7 +109,7 @@
   ansible.builtin.import_role:
     name: geerlingguy.ntp
   vars:
-    ansible_become: True
+    ansible_become: true
   when: configure_ntp | bool
   tags: ntp
 
@@ -159,5 +159,5 @@
     name: prometheus.prometheus.node_exporter
   when: install_prometheus_node_exporter | bool
   tags:
-   - monitoring
-   - exporters:node
+    - monitoring
+    - exporters:node

@@ -8,7 +8,7 @@
         - name: "Get stat info from /root/.bash_history"
           ansible.builtin.stat:
             path: "/root/.bash_history"
-          become: True
+          become: true
           register: bash_history_file
 
         - name: "Set ACL to default on file /root/.bash_history (when fs suport extents)"
@@ -17,7 +17,7 @@
             attributes: "ae"
             modification_time: "preserve"
             access_time: "preserve"
-          become: True
+          become: true
           when:
             - '"append" in bash_history_file.stat.attributes'
             - '"extents" in bash_history_file.stat.attributes'
@@ -28,7 +28,7 @@
             attributes: "a"
             modification_time: "preserve"
             access_time: "preserve"
-          become: True
+          become: true
           when:
             - '"append" in bash_history_file.stat.attributes'
             - '"extents" not in bash_history_file.stat.attributes'

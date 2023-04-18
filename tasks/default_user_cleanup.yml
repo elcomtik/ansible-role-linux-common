@@ -1,8 +1,8 @@
 ---
 - name: "Remove the user"
-  become: True
+  become: true
   ansible.builtin.user:
     name: "{{ item }}"
     state: "absent"
-    remove: True
+    remove: true
   with_items: "{{ default_users }}"

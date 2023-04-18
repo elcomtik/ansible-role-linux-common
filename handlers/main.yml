@@ -2,7 +2,7 @@
 # handlers file for linux_common
 
 - name: "Reload crond"
-  become: True
+  become: true
   ansible.builtin.service:
     name: "crond"
     state: "reloaded"

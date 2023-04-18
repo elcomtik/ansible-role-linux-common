@@ -1,9 +1,9 @@
 ---
 - name: "Add variables to /root/.bashrc"
-  become: True
+  become: true
   ansible.builtin.blockinfile:
     dest: "/root/.bashrc"
-    backup: True
+    backup: true
     insertafter: EOF
     block: |
       HISTFILESIZE=400000000
@@ -21,7 +21,7 @@
     access_time: "preserve"
 
 - name: "Get stat info from /root/.bash_history"
-  become: True
+  become: true
   ansible.builtin.stat:
     path: "/root/.bash_history"
   register: bash_history_file
@@ -31,25 +31,25 @@
     var: bash_history_file.stat.attributes
 
 - name: "Set ACL to appendonly on file /root/.bash_history (when fs suport extents)"
-  become: True
+  become: true
   ansible.builtin.file:
     path: "/root/.bash_history"
     attributes: "ae"
     modification_time: "preserve"
     access_time: "preserve"
-  changed_when: False
+  changed_when: false
   when:
     - '"append" not in bash_history_file.stat.attributes'
     - '"extents" in bash_history_file.stat.attributes'
 
 - name: "Set ACL to appendonly on file /root/.bash_history (when fs do not suport extents)"
-  become: True
+  become: true
   ansible.builtin.file:
     path: "/root/.bash_history"
     attributes: "a"
     modification_time: "preserve"
     access_time: "preserve"
-  changed_when: False
+  changed_when: false
   when:
     - '"append" not in bash_history_file.stat.attributes'
     - '"extents" not in bash_history_file.stat.attributes'

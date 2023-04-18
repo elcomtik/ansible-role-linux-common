@@ -1,12 +1,12 @@
 ---
 - name: "Ensure dependencies are installed"
-  become: True
+  become: true
   ansible.builtin.package:
     name: "{{ slack_sender_dependency_packages }}"
     state: "present"
 
 - name: "Copy cronjob slack sender script"
-  become: True
+  become: true
   ansible.builtin.template:
     src: "templates/usr/local/sbin/cronjob_slack_sender.py.j2"
     dest: "/usr/local/sbin/cronjob_slack_sender.py"
@@ -15,7 +15,7 @@
     mode: "0750"
 
 - name: "Configure crond to use slack sender instead of default sendmail (RedHat & CentOS)"
-  become: True
+  become: true
   ansible.builtin.lineinfile:
     path: "/etc/sysconfig/crond"
     regexp: "^CRONDARGS="
@@ -24,7 +24,7 @@
   when: ansible_os_family == "RedHat"
 
 - name: "Configure crond to use slack sender instead of default sendmail (Debian & Ubuntu)"
-  become: True
+  become: true
   ansible.builtin.file:
     src: "/usr/local/sbin/cronjob_slack_sender.py"
     dest: "/usr/sbin/sendmail"
