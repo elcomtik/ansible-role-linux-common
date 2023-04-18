@@ -32,7 +32,7 @@
 
 - name: "Reboot the machine"
   become: True
-  ansible.builtin.shell: 
+  ansible.builtin.shell:
     cmd: ( sleep 2s && shutdown -r now "Ansible updates triggered" & )
   register: shutdown_output
   changed_when: shutdown_output.rc == 0
