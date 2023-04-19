@@ -23,8 +23,8 @@ jobs:
           - debian9
           - debian10
           - debian11
-          - fedora35
           - fedora36
+          - fedora37
           - rocky8
           - ubuntu2004
           - ubuntu2204

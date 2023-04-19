@@ -41,15 +41,15 @@ debian11:
   script:
     - molecule test --scenario-name debian11
 
-fedora35:
-  stage: molecule-test
-  script:
-    - molecule test --scenario-name fedora35
-
 fedora36:
   stage: molecule-test
   script:
     - molecule test --scenario-name fedora36
+
+fedora37:
+  stage: molecule-test
+  script:
+    - molecule test --scenario-name fedora37
 
 rocky8:
   stage: molecule-test
