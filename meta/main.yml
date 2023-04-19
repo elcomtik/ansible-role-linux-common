@@ -10,8 +10,8 @@ galaxy_info:
   platforms:
     - name: Fedora
       versions:
-        - '34'
-        - '35'
+        - '36'
+        - '37'
     - name: EL
       versions:
         - '7'
@@ -23,8 +23,8 @@ galaxy_info:
         - bullseye
     - name: Ubuntu
       versions:
-        - bionic
         - focal
+        - jammy
 
   galaxy_tags:
     - cloudinit
