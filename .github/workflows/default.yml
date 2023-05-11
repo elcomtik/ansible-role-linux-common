@@ -20,11 +20,11 @@ jobs:
       matrix:
         molecule_distro:
           - centos7
-          - debian9
           - debian10
           - debian11
           - fedora36
           - fedora37
+          - fedora38
           - rocky8
           - ubuntu2004
           - ubuntu2204
@@ -38,7 +38,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}

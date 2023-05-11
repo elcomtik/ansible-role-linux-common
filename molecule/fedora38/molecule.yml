@@ -11,10 +11,10 @@ lint: |
   ansible-lint
   flake8
 platforms:
-  - name: debian9
-    image: mrlesmithjr/debian:9
+  - name: fedora38
+    image: mrlesmithjr/fedora:38
     privileged: true
-    command: /lib/systemd/systemd
+    command: /usr/sbin/init
     # tmpfs:
     #   - /run
     #   - /tmp
@@ -31,7 +31,6 @@ scenario:
   test_sequence:
     - dependency
     - syntax
-    - lint
     - create
     - prepare
     - converge
