@@ -38,7 +38,7 @@
   changed_when: shutdown_output.rc == 0
   when:
     - allow_reboot|bool
-    - kernel_updated.changed
+    - kernel_updated.changed  # noqa no-handler
 
 - name: "Wait for machine to come back"
   ansible.builtin.wait_for_connection:
@@ -46,7 +46,7 @@
     delay: 20
   when:
     - allow_reboot|bool
-    - kernel_updated.changed
+    - kernel_updated.changed  # noqa no-handler
 
 - name: "Update all packages"
   become: true
