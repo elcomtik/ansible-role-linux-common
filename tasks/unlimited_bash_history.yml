@@ -13,6 +13,7 @@
       shopt -s histappend
 
 - name: "Ensure /root/.bash_history is present (new system may not have it created yet)"
+  become: true
   ansible.builtin.file:
     path: "/root/.bash_history"
     state: "touch"
