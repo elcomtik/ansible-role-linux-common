@@ -54,6 +54,7 @@
   tags: kdump
 
 - name: "Configure swap"
+  become: true
   ansible.builtin.import_role:
     name: geerlingguy.swap
   when: configure_swap | bool
